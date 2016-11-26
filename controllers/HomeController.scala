@@ -1,7 +1,10 @@
 package controllers
 
 import javax.inject._
-import play.api._
+
+import models.UserBP
+import play.api.data.Form
+import play.api.data.Form._
 import play.api.mvc._
 
 /**
@@ -21,4 +24,13 @@ class HomeController @Inject() extends Controller {
     Ok(views.html.index("Your new application is ready."))
   }
 
+  val userForm: Form[UserBP] = Form {
+    mapping(
+      "name" -> text
+    )(UserBP.apply() (UserBP.unapply())
+  }
+  def addUser = Action { implicit request =>
+
+
+  }
 }
